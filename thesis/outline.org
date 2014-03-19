@@ -1,0 +1,85 @@
+#+TITLE: SCR thesis outline
+#+AUTHOR: Alex Reinhart
+#+OPTIONS: toc:nil
+
+* Abstract
+For security, environmental, and regulatory purposes it is useful to monitor
+wide areas for unexpected changes in radioactivity.  Background radiation from
+naturally radioactive materials presents the largest challenge to detection
+sensitivity.  Most commonly, a single background spectrum is recorded and all
+subsequent spectra are compared to this static background. We have developed a
+temporal anomaly detection algorithm which uses multiple passes across an area
+to build a spatial map of background spectra, allowing increased sensitivity to
+anomalies. By comparing spectral shape rather than count rate we increase
+sensitivity and limit the influence of the background-dominated low-energy
+region. To demonstrate this technique, we performed source injection
+simulations, simple source detection tests, and blind tests at University of
+Texas football games. Applications in wide-area monitoring through detectors on
+vehicles, such as buses, are explored.
+* Introduction
+** Project goals
+ - Develop wide-area mapping and change detection for gamma rays
+ - Potential applications in nuclear security
+ - Example use-case: wide-area surveillance of a city through buses
+** Prior work
+ - PNNL's anomaly detection schemes with a scintillator in a truck
+ - Gamma imaging
+ - Border portal monitors
+ - Aerial mapping of cities (Seattle, NYC)
+ - Radiation pagers
+** Thesis scope
+ - Developed new anomaly detection algorithm for areal mapping and anomaly
+   detection
+ - Collected dozens of hours of data at PRC
+ - Built source injection simulation system and simulated various sources
+ - Performed blind tests at stadium
+ - Performed known source tests to validate simulations (ideally)
+* Methods
+** Code for data acquisition and mapping
+ - Python-to-scintillator interface
+ - Describe logging method: record histogram every two seconds, what's done on
+   GPS dropout, etc.
+ - Mention GPS cleaning methods if devised by Todd (?)
+** SCR algorithm derivation
+ - Reuse portions of SCR paper
+** Simulations
+ - Calculation of attenuation
+ - Poisson variation of data
+ - Source injection methods
+* Experiments
+** PRC data
+ - Used to pick false-alarm threshold
+ - Useful for simulation studies
+ - Varied and interesting background radiation levels
+** Stadium data
+*** Background data collection
+*** Operation at football games
+**** Lessons learned:
+   - Detector gain shift with temperature
+   - GPS drift
+**** Results
+   - Different kinds of sources detected
+   - Comparison with radiation pagers
+   - Rough detection range estimates
+** Minimum detectable source simulations
+ - Validation by experiment?
+ - Comparison with other methods
+** Bus route simulation
+ - Harvested data on bus routes from Capital Metro
+ - Simulated using buses as detectors
+ - Detected known source at 240m
+ - Demonstrated practicality of surveillance with preexisting vehicles
+
+* Conclusions
+- Successfully developed radiation mapping algorithm and tested it in a variety
+  of situations
+- Practical for wide-area surveillance using preexisting vehicles at minimal
+  expense
+- Better than alternatives
+* Appendices
+** Python extension for scintillator
+ - Briefly describe how it works
+ - Source code repository location (if possible)
+** Analysis software
+ - Libraries used, code capabilities, etc.
+ - Source code repository location (if possible)

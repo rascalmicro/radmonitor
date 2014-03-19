@@ -1,0 +1,158 @@
+\documentclass[letterpaper,11pt]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{mathpazo} % Palatino fonts for mathematics
+\usepackage{tgpagella} % improved Palatino font for text
+\usepackage{microtype} % better justification
+\usepackage{amsmath}
+\usepackage{cmap} % make PDFs searchable
+
+% hyperref turns internal references to hyperlinks, allows \url{}
+% also allows setting PDF meta information
+\usepackage[pdftex,
+  pdfauthor={Alex Reinhart},
+  pdftitle={An Integrated System for Gamma-Ray Spectral Mapping and Anomaly
+    Detection}]{hyperref} 
+
+%% Memoir options
+\chapterstyle{ell}
+% Put section numbers in left margin
+\setsecindent{-33pt}
+% Include subsections in TOC
+\setcounter{tocdepth}{3}
+\setsecnumdepth{subsection}
+% Caption fonts
+\captionnamefont{\small\itshape}
+\captiontitlefont{\small}
+\captionstyle[\centering]{}
+
+% Signature line
+\newcommand{\sigline}{\noindent
+\makebox[2.5in]{\hrulefill}\\}
+% Date line -- shorter
+\newcommand{\dateline}{\noindent
+\makebox[1.5in]{\hrulefill}\\}
+
+\begin{document}
+\pagenumbering{roman}
+
+% Title page
+\begin{titlingpage}
+\begin{center}
+\begin{Spacing}{2}
+{\LARGE
+  An Integrated System for Gamma-Ray Spectral Mapping and Anomaly Detection
+}
+\end{Spacing}
+\end{center}
+
+\begin{center}
+  Presented by Alex Reinhart\\
+  Applied Research Laboratories\\
+  The University of Texas at Austin
+\end{center}
+
+\begin{center}
+In partial fulfillment of the requirements for graduation with the\\
+Dean’s Scholars Honors Degree in Physics
+\end{center}
+
+\vskip 1in
+
+\begin{minipage}[t]{0.5\textwidth}
+\sigline 
+Dr.~Alex Athey\\
+Supervisor
+\end{minipage}\hskip 1in
+\begin{minipage}[t]{0.4\textwidth}
+\dateline
+Date
+\end{minipage}
+
+\vskip 0.85in
+
+\begin{minipage}[t]{0.5\textwidth}
+\sigline
+Prof.~Roy Schwitters\\
+Co-Supervising Professor
+\end{minipage}\hskip 1in
+\begin{minipage}[t]{0.4\textwidth}
+\dateline
+Date
+\end{minipage}
+
+\vskip 0.85in
+
+\begin{minipage}[t]{0.5\textwidth}
+\sigline
+Prof.~Greg Sitz\\
+Honors Adviser in Physics
+\end{minipage}\hskip 1in
+\begin{minipage}[t]{0.4\textwidth}
+\dateline
+Date
+\end{minipage}
+\end{titlingpage}
+
+\cleardoublepage
+
+\chapter*{Acknowledgments}
+
+This work would not be possible without the support of my supervisor, Dr.~Alex
+Athey, along with his colleagues at Applied Research Laboratories. Many helpful
+suggestions were provided by Dr.~Steve Biegalski and Tracy Tipping of the
+Nuclear Engineering Teaching Laboratories, along with experimental
+support. Dr.~James Scott gave much valuable statistical advice. Bridgeport
+Instruments provided helpful guidance in using their scintillator detectors. I
+benefitted from the wisdom of my thesis advisor, Dr.~Roy Schwitters, and his
+many suggestions. Scott Pennington lent his expertise and worked to ensure the
+cooperation of UT Athletics, making our football stadium data collection
+possible.
+
+This research has been funded in part by the Office of the Deputy Assistant
+Secretary of Defense for Nuclear Matters.
+
+Finally, I must thank Rey Gomez, Patrick Vetter, Franziska Klingberg, and Todd
+Hay, whose legs suffered in the name of science.
+
+\cleardoublepage
+
+\chapter*{Abstract}
+For security, environmental, and regulatory purposes it is useful to monitor
+wide areas for unexpected changes in radioactivity.  Background radiation from
+naturally radioactive materials presents the largest challenge to detection
+sensitivity.  Most commonly, a single background spectrum is recorded and all
+subsequent spectra are compared to this static background. We have developed a
+temporal anomaly detection algorithm which uses multiple passes across an area
+to build a spatial map of background spectra, allowing increased sensitivity to
+anomalies. By comparing spectral shape rather than count rate we increase
+sensitivity and limit the influence of the background-dominated low-energy
+region. To demonstrate this technique, we performed source injection
+simulations, simple source detection tests, and blind tests at University of
+Texas football games. Applications in wide-area monitoring through detectors on
+vehicles, such as buses, are explored. We also probe the feasibility of using
+kriging methods from geostatistics to provide more accurate anomaly mapping.
+
+\cleardoublepage
+
+\tableofcontents
+
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+\input{introduction.tex}
+
+\input{methods.tex}
+
+\input{experiments.tex}
+
+\input{kriging.tex}
+
+\input{conclusions.tex}
+
+\bibliographystyle{ieeetr}
+\bibliography{algorithms}
+
+\end{document}

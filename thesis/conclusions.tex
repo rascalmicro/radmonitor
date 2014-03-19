@@ -1,0 +1,38 @@
+\chapter{Conclusions}
+
+In this work, we report on the development of an integrated system for wide-area
+radiation surveillance.  A mobile detector is used to collect multiple-pass
+data, which is stored into a spatial-temporal database.  We developed a novel
+approach for anomaly detection of the spectral content by comparing observations
+to previous determinations of the background.  Because the spatial variance is
+much larger than the temporal variance, this multi-pass methodology has the
+potential to deliver increased sensitivity to faint or distant sources.
+
+In total, the system provides an increase in sensitivity assessment to radiation
+changes, while operating in a more efficient and cost-effective manner than
+dedicated mapping systems.  These developments are the first steps necessary to
+implement the larger vision of a providing continuous wide-area surveillance
+through the use of mobile sensors.
+
+Some future improvements will be necessary to bring the system into practical
+use. Real-time energy calibration, using a known check source carried with the
+detector, may be necessary for more accurate spectral anomaly detection. Such
+systems have already been developed for other gamma ray detection applications,
+as scintillator crystals tend to ``drift'' and lose
+calibration.\cite{Runkle:2009ev}
+
+Data cleaning will also be necessary to use GPS data. When walking under
+overhangs or in urban canyons, the estimated GPS position may drift, smearing
+data over a wide area. Techniques to reduce this problem will be necessary; for
+example, if the detector travels a regular route, deviations from this route
+can be ``snapped'' back to the usual route. In our stadium data, it may be
+possible to simply check for data points where the estimated velocity is larger
+than walking speed, or where the detector position drifts across the football
+field.
+
+Future improvements center on improvements to the spatial kriging method for
+anomaly detection, which shows great promise in detecting anomalies at longer
+distances. Simulation studies and experimental tests will be needed to test the
+viability of functional cokriging and other techniques to improve results. Other
+work may focus on methods to determine optimal energy bin sizes and adaptation
+for use in small, low-power mobile detectors.

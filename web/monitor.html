@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <title>Radiation monitor</title>
+        <meta charset="UTF-8" />
+        <script type="text/javascript" src="web/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="web/js/jquery.timeago.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=false"></script>
+        <script type="text/javascript" src="web/js/flot/jquery.flot.js"></script>
+        <script type="text/javascript" src="web/js/flot/jquery.flot.threshold.js"></script>
+		
+		<script type="text/javascript" src="web/js/d3.v3.min.js"></script>
+		<script type="text/javascript" src="web/js/hexbin.js"></script>
+		
+        <style type="text/css">
+        body {
+            font-family: helvetica, arial, sans-serif;
+        }
+		
+		.hexagon {
+		  fill: none;
+		  stroke: #000;
+		  stroke-width: .5px;
+		}
+		
+        </style>
+    </head>
+    <body>
+		<!--Placed here for d3.js reasons (body must exist)-->
+		<script type="text/javascript" src="web/js/monitor.js"></script>
+	
+		<div id="controls" style = "min-width: 150px; width: 10%; float:left; border: 0px solid black">
+			<input type="datetime" id = "start" value = "7-10-2013" style = "width:96.5%">
+			<input type="datetime" id = "end" value = "7-11-2013" style = "width:96.5%">
+			<input type="button" value="Set Time" onclick = "setTimeBtn();" 
+				style = "width: 100%">
+			
+			<input type="number" name = "radius" id = "radius" value = "20" style = "width: 96.5%">
+			<input onclick = "setRadiusBtn();" 
+				type="button" value="Change Hex Radius" style = "width: 100%">
+			<input onclick = "toggleHexBtn();"
+				type = "button" value = "Toggle Hex Visibility" style = "width: 100%">
+			<input onclick = "togglePathBtn();"
+				type = "button" value = "Toggle Path Visibility" style = "width: 100%">
+			<input onclick = "toggleRealBtn();"
+				type = "button" value = "Toggle Real-Time" style = "width: 100%">
+		</div>
+		
+		<div id="display" style = "float:left;min-width: 1000px; border: 0px solid black;">
+			<h1><span id="cps">-</span> cps</h1>
+			<div id="status">
+				last data <time id="time" datetime="">no data yet</time> |
+				Battery: <span id="batt">?</span>% |
+				GPS precision: <span id="hdop">?</span> |
+				Temp: <span id="temp">?</span> °C (<span id="tempf">?</span> °F)
+			</div>
+			<div style = "width: 100%; float:left">
+				<div align = "center" style = "height:500px" >
+					<div id="map-canvas" style = "width:50%;height:100%;float:left">
+					</div>
+					<div style = "width: 50%; height: 100%;float:left">
+						<div style = "height:50%; width: 100%; float:left">
+							<p align = "center" style = "margin-top: 0px; margin-bottom: 2px">CPS Plot</p>
+							<div id="cpsplot" style="width: 98%; height:80%" align = "center">
+							</div>
+						</div>
+						<div style = "height:50%;width: 100%;float:left">
+							<p align = "center" style = "margin-top: 0px; margin-bottom: 2px">HDOP Plot</p>
+							<div id="hdopplot" style="width: 98%; height:80%" align = "center">
+							</div>
+						</div>
+					</div>
+				</div>
+				<p align = "center" style = "margin-bottom: 0px">Histogram </p>
+				<div id="histplot" style="width: 100%; height:300px;clear:left">
+				</div>
+			</div>
+		</div>
+    </body>
+	
+</html>

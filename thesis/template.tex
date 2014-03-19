@@ -1,0 +1,143 @@
+\documentclass[letterpaper,11pt,oneside]{memoir} % remove 'oneside' for a
+                                % version suitable for printing and binding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+% Improved fonts
+% See also http://www.tug.dk/FontCatalogue/
+\usepackage{mathpazo} % Palatino fonts for mathematics
+\usepackage{tgpagella} % improved Palatino font for text
+
+\usepackage{microtype} % better justification
+\usepackage{amsmath}
+\usepackage{cmap} % make PDFs searchable
+
+% hyperref turns internal references to hyperlinks, allows \url{}
+% also allows setting PDF meta information
+\usepackage[pdftex,
+  pdfauthor={Your Name Here},
+  pdftitle={Your Title Here}]{hyperref}
+
+%% Memoir options
+%% The Memoir manual is available online:
+%% http://www.tex.ac.uk/tex-archive/macros/latex/contrib/memoir/memman.pdf
+\chapterstyle{ell}
+% Put section numbers in left margin
+\setsecindent{-33pt}
+% Include subsections in TOC
+\setcounter{tocdepth}{3}
+\setsecnumdepth{subsection}
+% Set caption fonts
+\captionnamefont{\small\itshape} % make "Figure n.n:" small and italic
+\captiontitlefont{\small} % make the caption text small
+\captionstyle[\centering]{\raggedright}
+
+% Signature line
+\newcommand{\sigline}{\noindent
+\makebox[2in]{\hrulefill}\\}
+
+\begin{document}
+\pagenumbering{roman}
+
+% Title page
+\begin{titlingpage}
+\begin{center}
+\begin{Spacing}{2}
+{\huge
+  An Example Physics Thesis
+}
+\end{Spacing}
+\end{center}
+
+\begin{center}
+  Presented by Your Name\\
+  The University of Texas at Austin
+\end{center}
+
+\begin{center}
+In partial fulfillment of the requirements for graduation with the\\
+Dean’s Scholars Honors Degree in Physics
+\end{center}
+
+\vskip 1in
+
+\begin{minipage}[t]{0.4\textwidth}
+\sigline
+Prof.~John Smith\\
+Supervising Professor
+\end{minipage}\hskip 1in
+\begin{minipage}[t]{0.4\textwidth}
+\sigline
+Date
+\end{minipage}
+
+\vskip 0.75in
+
+\begin{minipage}[t]{0.4\textwidth}
+\sigline
+Prof.~Greg Sitz\\
+Honors Adviser in Physics
+\end{minipage}\hskip 1in
+\begin{minipage}[t]{0.4\textwidth}
+\sigline
+Date
+\end{minipage}
+\end{titlingpage}
+
+\cleardoublepage
+
+\chapter*{Acknowledgments}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies,
+sapien eu sagittis aliquam, lectus dui faucibus leo, id euismod tellus nisl et
+augue. Sed tempor tristique tortor, sed auctor nisi consequat quis. Morbi
+pulvinar purus in tortor venenatis eu placerat dui scelerisque. Quisque rutrum
+felis quis diam tincidunt et feugiat magna eleifend. Fusce vehicula tincidunt
+semper. Suspendisse dapibus porttitor purus ac suscipit. Ut gravida justo nec
+metus ornare sed vehicula lorem porta. Phasellus pellentesque imperdiet dolor,
+ut rhoncus odio cursus nec. Proin non orci justo, id volutpat turpis.
+
+% Move to the next right-hand page; if printed, you want chapters to start on
+% the right side.
+\cleardoublepage
+
+\chapter*{Abstract}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies,
+sapien eu sagittis aliquam, lectus dui faucibus leo, id euismod tellus nisl et
+augue. Sed tempor tristique tortor, sed auctor nisi consequat quis. Morbi
+pulvinar purus in tortor venenatis eu placerat dui scelerisque. Quisque rutrum
+felis quis diam tincidunt et feugiat magna eleifend. Fusce vehicula tincidunt
+semper. Suspendisse dapibus porttitor purus ac suscipit. Ut gravida justo nec
+metus ornare sed vehicula lorem porta. Phasellus pellentesque imperdiet dolor,
+ut rhoncus odio cursus nec. Proin non orci justo, id volutpat turpis.
+
+\cleardoublepage
+
+\tableofcontents
+
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+\chapter{Introduction}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies,
+sapien eu sagittis aliquam, lectus dui faucibus leo, id euismod tellus nisl et
+augue. Sed tempor tristique tortor, sed auctor nisi consequat quis. Morbi
+pulvinar purus in tortor venenatis eu placerat dui scelerisque. Quisque rutrum
+felis quis diam tincidunt et feugiat magna eleifend. Fusce vehicula tincidunt
+semper. Suspendisse dapibus porttitor purus ac suscipit. Ut gravida justo nec
+metus ornare sed vehicula lorem porta. Phasellus pellentesque imperdiet dolor,
+ut rhoncus odio cursus nec. Proin non orci justo, id volutpat turpis.
+
+% For your content, place each chapter in a separate TeX file for convenience,
+% and then simply use
+% \input{chaptername.tex}
+% to have the text included here.
+% You don't need a document preamble or anything in each chapter file -- just
+% start with
+% \chapter{Title here}
+% and run with it. Then just run LaTeX on this file to get the entire thesis
+% compiled in one go.
+
+\end{document}

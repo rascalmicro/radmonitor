@@ -1,0 +1,16 @@
+*.toc
+*.out
+*.log
+*.blg
+*.bbl
+*.lof
+*.lot
+*.snm
+*.nav
+*.synctex.gz
+thesis.pdf
+talk.pdf
+outline.pdf
+outline.tex
+*.aux
+.DS_Store
