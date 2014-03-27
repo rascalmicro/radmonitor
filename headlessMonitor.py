@@ -18,16 +18,26 @@ import dateutil.parser
 from statusLED import StatusLED
 
 led = StatusLED(18)
-led.setStatus('on')
 
 SAMPLE_TIME = 2 # seconds
+session = gps.gps(mode=gps.WATCH_ENABLE)
 
-conn = psycopg2.connect(database = 'radiation', user = 'radiation',
-                        password = 'radiation', host = 'localhost')
+try:
+    # try:                        # try to connect to remote db if it's available
+    #     conn = psycopg2.connect(database = 'radiation', user = 'radiation',
+    #                 password = 'radiation', host = '10.42.0.1')
+    #     print("Using remote database")
+    # except:
+    conn = psycopg2.connect(database = 'radiation', user = 'radiation',
+                password = 'radiation', host = 'localhost')
+    print("Using local database")
+    cur = conn.cursor()
+    led.setStatus('on')
+except:
+    print('No Postgres connection')
+    led.setStatus('off')
+    raise SystemExit
 
-cur = conn.cursor()
-
-session = gps.gps(mode=gps.WATCH_ENABLE|gps.WATCH_NEWSTYLE)
 
 e = emorpho.eMorpho()
 e.scan()
@@ -48,22 +58,27 @@ e.startTimedHistogram(SAMPLE_TIME)
 def getFix(session):
     """Use gpsd session to get a TPV report. Return None if no fix is currently
        available. Return gpsd's dict otherwise."""
-
-    for report in session:
-        if report["class"] == "TPV":
-            if report["mode"] == 3:
-                return report
-            else:
-                return None
-
+    report = session.next()
+    if report['class'] == 'DEVICE':
+        # Clean up our current connection.
+        session.close()
+        # Tell gpsd we're ready to receive messages.
+        session = gps.gps(mode=gps.WATCH_ENABLE)
+    elif report['class'] == 'TPV':
+        if report['mode'] == 3:
+            return report
+        else:
+            return None
+        
 while True:
     time.sleep(SAMPLE_TIME)
     location = getFix(session)
     if location is None:
         led.setStatus('error')
-        print "Error: No GPS location"
+        # print("Error: No GPS fix")
         continue
     else:
+        # print(location['time'])
         led.setStatus('on')
 
     hist = e.readHistogram()
